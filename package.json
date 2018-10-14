@@ -1,0 +1,24 @@
+{
+  "name": "dicordhue",
+  "version": "1.0.0",
+  "description": "Discord bot to control lights",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "concurrently -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/src/index.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "discord.js": "^11.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.7",
+    "concurrently": "^4.0.1",
+    "eslint": "^5.7.0",
+    "nodemon": "^1.18.4",
+    "typescript": "^3.1.3"
+  }
+}

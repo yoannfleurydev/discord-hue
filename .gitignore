@@ -1,0 +1,4 @@
+node_modules/
+dist/
+config/auth.ts
+config/parameters.ts
