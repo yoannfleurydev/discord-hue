@@ -5,6 +5,7 @@ import Pong from "./action/message/Pong";
 import HueStatus from "./action/message/HueStatus";
 import MessageAction from "./action/message/MessageAction";
 import HueTurn from "./action/message/HueTurn";
+import WeatherAction from "./action/message/WeatherAction";
 
 const client = new discord.Client();
 
@@ -17,7 +18,8 @@ client.on(DiscordEvents.READY, () => {
 const messageActions: Array<MessageAction> = [
   new Pong(),
   new HueStatus(),
-  new HueTurn()
+  new HueTurn(),
+  new WeatherAction()
 ];
 
 client.on(DiscordEvents.MESSAGE, message => {

@@ -4,10 +4,8 @@ import parameters from "../../config/parameters";
  * Class with static methods to generate the URL.
  */
 export default class HueRLGenerator {
-  parameters: Object = parameters;
-
   static base(): string {
-    return `http://${parameters.ip}/api/${parameters.user}`;
+    return `http://${parameters.hue.ip}/api/${parameters.hue.user}`;
   }
 
   static lights(): string {
