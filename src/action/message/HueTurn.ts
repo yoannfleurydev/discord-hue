@@ -1,6 +1,6 @@
 import MessageAction from "./MessageAction";
 import { Message } from "discord.js";
-import Emoji, { buildEmoji } from "../../emoji/Emoji";
+import Emoji, { buildEmoji, getRealEmoji } from "../../emoji/Emoji";
 import HueService from "../../service/http/HueService";
 
 const content: string = "hue turn";
@@ -43,19 +43,19 @@ export default class HueTurn extends MessageAction {
         ) + 1;
 
       if (index === 0) {
-        message.channel.send(`No light matching the selector`);
+        message.channel.send(`No light matching the selector ${selector}`);
         return;
       }
 
       if (await HueService.updateLight(index, { on })) {
-        message.channel.send(
-          `${buildEmoji(Emoji.BULB)} Light turned ${
-            on ? Status.ON : Status.OFF
-          }`
-        );
+        message
+          .react(getRealEmoji(on ? Emoji.BULB : Emoji.OCTAGONAL_SIGN))
+          .catch(console.error);
       } else {
         message.channel.send(
-          `${buildEmoji(Emoji.BOOM)} Error while turning the light on/off`
+          `I'm sorry, I failed to turn the light ${
+            on ? Status.ON : Status.OFF
+          } ${getRealEmoji(Emoji.WORRIED)}`
         );
       }
     };

@@ -12,7 +12,9 @@ export default class MessageAction extends Action {
     this.content = content;
 
     this.condition = (message: Message): boolean => {
-      return message.content.startsWith(this.content);
+      return message.content
+        .toLowerCase()
+        .startsWith(this.content.toLowerCase());
     };
   }
 }
