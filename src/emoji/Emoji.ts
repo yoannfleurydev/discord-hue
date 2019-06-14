@@ -3,6 +3,7 @@
  */
 enum Emoji {
   BULB = "bulb",
+  BOOM = "boom",
   OCTAGONAL_SIGN = "octagonal_sign",
   NO_ENTRY_SIGN = "no_entry_sign"
 }

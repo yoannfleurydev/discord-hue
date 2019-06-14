@@ -4,28 +4,21 @@ import HueRLGenerator from "../../service/HueRLGenerator";
 import Axios from "axios";
 import { Hue } from "../../types/hue";
 import Emoji, { buildEmoji } from "../../emoji/Emoji";
+import HueService from "../../service/http/HueService";
 
 export default class HueStatus extends MessageAction {
   constructor() {
     super("hue status");
 
-    this.action = (message: Message) => {
-      Axios.get(HueRLGenerator.lights()).then(res => {
-        const lights: Array<Hue.Light> = new Array();
+    this.action = async (message: Message) => {
+      const lights = await HueService.getLights();
 
-        // Put the JSON of each light in an array because Philips Hue default is
-        // an object.
-        Object.keys(res.data).forEach(key => {
-          lights.push(res.data[key]);
-        });
-
-        const messages: Array<String> = new Array();
-        lights.forEach(light => {
-          messages.push(this.buildLightStatusMessage(light));
-        });
-
-        message.channel.send(messages.join("\n"));
+      const messages: Array<String> = new Array();
+      lights.forEach(light => {
+        messages.push(this.buildLightStatusMessage(light));
       });
+
+      message.channel.send(messages.join("\n"));
     };
   }
 

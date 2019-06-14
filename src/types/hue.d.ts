@@ -1,16 +1,16 @@
 export declare namespace Hue {
   export interface State {
-    on: boolean;
-    bri: number;
-    hue: number;
-    sat: number;
-    effect: string;
-    xy: number[];
-    ct: number;
-    alert: string;
-    colormode: string;
-    mode: string;
-    reachable: boolean;
+    on?: boolean;
+    bri?: number;
+    hue?: number;
+    sat?: number;
+    effect?: string;
+    xy?: number[];
+    ct?: number;
+    alert?: string;
+    colormode?: string;
+    mode?: string;
+    reachable?: boolean;
   }
 
   export interface Swupdate {

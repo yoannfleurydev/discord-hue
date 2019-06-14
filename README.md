@@ -4,7 +4,7 @@
 control my Phillips Hue lights.
 
 **Discord Hue** is written in [TypeScript](https://www.typescriptlang.org/) and
-is compiled for Node (tested on version `8.12.0`).
+is compiled for Node (tested on version `10.16.0`).
 
 ## Installation
 
