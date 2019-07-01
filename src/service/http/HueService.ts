@@ -14,7 +14,13 @@ export default class HueService {
    */
   static async updateLight(index: number, state: Hue.State): Promise<boolean> {
     try {
-      await axios.put(HueRLGenerator.lightsIndexState(index), state);
+      // TODO: https://github.com/yoannfleurydev/discord-hue/issues/6
+      // First get key from local index
+      const response: AxiosResponse = await axios.get(HueRLGenerator.lights());
+      const key: number = Number(Object.keys(response.data)[index-1]);
+
+      // Then, pass key instead of index
+      await axios.put(HueRLGenerator.lightsIndexState(key), state);
 
       return true;
     } catch {
